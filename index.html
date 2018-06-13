@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang ="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Snapterest</title>
+  <style type="text/css">
+ 
+
+  </style>
+</head>
+<body>
+  <div id="mortgage">
+  <div class="row"><input type="text"  id="C" placeholder="credit" >руб.</div>
+  <div class="row"><input type="text"  id="R" placeholder="interest rate" >%</div>
+  <div class="row"><input type="text"  id="Y" placeholder="credit period">yr.</div>
+  <div class="row"><a href="javascript:calc()">calculate</a></div>
+  <div class="row">monthly payment:
+  <div id="result"></div> 
+  </div> 
+ </div>
+ 
+  <div class=script>
+    <script>
+      function calc(){
+        var S = document.getElementById("C").value - 0;
+        var p = document.getElementById("R").value - 0;
+        var n = document.getElementById("Y").value - 0;
+        
+        if(
+         typeof S != "number" ||
+         typeof p != "number" ||
+         typeof n != "number" 
+        ) return false;
+        
+        p = p / 1200; 
+        n = n * 12; 
+        
+        document.getElementById("result").innerHTML =  (S * p / (1 - Math.pow(1 + p, -n))).toFixed(2); 
+      }
+    </script>
+       
+         
+  </div>     
+  </body>
+</html>
